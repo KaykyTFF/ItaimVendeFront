@@ -1,0 +1,24 @@
+/* Container do Menu */
+.menu-lateral {
+    -fx-background-color: #2F3640; /* Fundo Escuro */
+    -fx-border-color: transparent #44BD32 transparent transparent; /* Borda Verde na direita */
+    -fx-border-width: 0 5 0 0; /* Espessura da borda verde */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 5, 0);
+}
+
+/* Botões do Menu */
+.btn-menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-padding: 10 20; /* Espaçamento interno */
+}
+
+.btn-menu-item:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Efeito ao passar o mouse */
+    -fx-border-color: transparent transparent transparent #44BD32; /* Pequena marcação na esquerda */
+    -fx-border-width: 0 0 0 3;
+}

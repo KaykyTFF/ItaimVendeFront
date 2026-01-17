@@ -1,0 +1,71 @@
+/* Container Principal (Fundo Escuro + Borda Verde) */
+.header-container {
+    -fx-background-color: #2d3436; /* Cinza Chumbo Profundo */
+    -fx-padding: 15px 30px;
+    -fx-border-color: transparent transparent #44BD32 transparent; /* Borda Verde embaixo */
+    -fx-border-width: 0 0 4px 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 2); /* Sombra para profundidade */
+}
+
+/* --- BARRA DE PESQUISA (Estilo Pílula) --- */
+.barra-busca-container {
+    -fx-background-color: #dfe6e9; /* Cinza bem claro */
+    -fx-background-radius: 30;     /* Totalmente arredondado */
+    -fx-padding: 5 15 5 20;        /* Espaço interno */
+    -fx-alignment: center-left;
+    -fx-min-width: 500px;          /* Largura fixa larga igual ao protótipo */
+}
+
+.campo-busca {
+    -fx-background-color: transparent;
+    -fx-text-fill: #636e72;
+    -fx-prompt-text-fill: #b2bec3;
+    -fx-font-size: 14px;
+    -fx-background-insets: 0;
+}
+
+.btn-lupa {
+    -fx-background-color: transparent;
+    -fx-text-fill: #636e72;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 0 10 0 0;
+}
+.btn-lupa:hover { -fx-text-fill: #2d3436; }
+
+/* --- BOTÕES DE TEXTO (Meus Anúncios) --- */
+.btn-texto-nav {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ecf0f1; /* Branco Gelo */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+.btn-texto-nav:hover { -fx-text-fill: #44BD32; }
+
+/* --- BOTÃO VENDER (Destaque) --- */
+.btn-vender-header {
+    -fx-background-color: #dfe6e9;
+    -fx-text-fill: #2d3436;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20;
+    -fx-padding: 8 25; /* Mais gordinho */
+    -fx-cursor: hand;
+}
+.btn-vender-header:hover {
+    -fx-background-color: #44BD32;
+    -fx-text-fill: white;
+}
+
+/* --- BOTÕES DE ÍCONE (Imagem) --- */
+.btn-imagem-icone {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+.btn-imagem-icone:hover {
+    -fx-effect: glow(0.3); /* Brilho suave ao passar o mouse */
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-background-radius: 50;
+}

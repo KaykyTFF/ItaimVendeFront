@@ -1,0 +1,156 @@
+/* --- FUNDO GERAL --- */
+.fundo-pagina {
+    -fx-background-color: #D9D9D9;
+}
+
+/* --- TÍTULOS --- */
+.titulo-tela {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.titulo-secao {
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+    -fx-font-size: 15px;
+}
+
+.texto-comum {
+    -fx-text-fill: #777777;
+    -fx-font-size: 14px;
+}
+
+/* --- BOTÕES --- */
+.btn-voltar {
+    -fx-background-color: #59AA59;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-cursor: hand;
+}
+
+.btn-editar-pequeno {
+    -fx-background-color: #59AA59;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+    -fx-padding: 5 20;
+    -fx-cursor: hand;
+}
+
+.btn-anunciar-grande {
+    -fx-background-color: #59AA59;
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-padding: 10 60;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
+}
+.btn-anunciar-grande:hover {
+    -fx-background-color: #4e964e;
+}
+
+/* --- CARTÕES (CARDS) --- */
+.card-padrao {
+    -fx-background-color: #EDEDED;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 4);
+}
+
+/* --- CAMPOS DE TEXTO (INPUTS) --- */
+.input-padrao {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 10;
+    -fx-prompt-text-fill: #888888;
+    -fx-text-fill: #555555;
+    -fx-font-size: 14px;
+    -fx-padding: 0 15;
+}
+
+/* CORREÇÃO DO TEXT AREA (Descrição) */
+.text-area-padrao {
+    -fx-background-color: #D9D9D9; /* Cor da borda/container */
+    -fx-background-radius: 10;
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+}
+/* Isto afeta a área onde você digita */
+.text-area-padrao .content {
+    -fx-background-color: #D9D9D9; /* Cor do fundo do texto */
+    -fx-background-radius: 10;
+    -fx-padding: 10px; /* <--- AQUI ESTÁ A CORREÇÃO DO TEXTO COLADO */
+}
+.text-area-padrao .prompt-text-fill {
+    -fx-fill: #888888;
+}
+
+/* --- ÁREAS DE FOTO --- */
+.area-foto {
+    -fx-background-color: #EDEDED;
+    -fx-background-radius: 10;
+    -fx-border-color: #AAAAAA;
+    -fx-border-radius: 10;
+    -fx-border-style: dashed;
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+}
+.icone-camera { -fx-font-size: 40px; -fx-text-fill: #999999; }
+.icone-mais { -fx-font-size: 30px; -fx-text-fill: #999999; }
+
+/* --- DROPDOWNS (COMBOBOX) - CORREÇÃO TOTAL --- */
+
+/* 1. O Botão (Fechado) */
+.combo-verde {
+    -fx-background-color: #59AA59;
+    -fx-background-radius: 25;
+    -fx-cursor: hand;
+}
+
+/* Texto do botão fechado (Branco) */
+.combo-verde .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 0 10; /* Afasta um pouco da borda esquerda */
+}
+
+/* Seta Branca */
+.combo-verde .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+/* 2. A Lista que abre (Popup) */
+.combo-verde .list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10; /* Arredonda a lista */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+    -fx-padding: 5px; /* Espaço entre a borda da lista e os itens (Evita corte branco) */
+}
+
+/* Os itens da lista */
+.combo-verde .list-view .list-cell {
+    -fx-text-fill: #333333; /* Texto escuro na lista */
+    -fx-background-color: transparent; /* Fundo transparente para respeitar o container */
+    -fx-padding: 8 10; /* Altura dos itens */
+    -fx-font-weight: normal;
+}
+
+/* Item quando o mouse passa por cima (Hover) */
+.combo-verde .list-view .list-cell:filled:hover {
+    -fx-background-color: #E0E0E0; /* Cinza claro */
+    -fx-background-radius: 5; /* Item arredondado dentro da lista */
+    -fx-text-fill: black;
+}
+
+/* Item selecionado */
+.combo-verde .list-view .list-cell:filled:selected {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 5;
+}
