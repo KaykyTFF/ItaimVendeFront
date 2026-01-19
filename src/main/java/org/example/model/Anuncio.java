@@ -1,5 +1,9 @@
 package org.example.model;
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +18,20 @@ public class Anuncio {
         this.imagens.add(img);
     }
 
+<<<<<<< HEAD
     private Long id;            // Long permite ser nulo (ainda não salvo)
+=======
+    private Long id;
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
     private Long usuarioId;
 
     private String titulo;
     private String descricao;
+<<<<<<< HEAD
     private Double preco;       // Double permite nulo e é melhor para JSON
+=======
+    private Double preco;
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
 
     private String categoria;
     private String tipo;
@@ -28,9 +40,14 @@ public class Anuncio {
     private String estado;
     private String contato;
     private Boolean ativo;
+<<<<<<< HEAD
     private LocalDateTime criadoEm;
 
     // --- LISTA DE IMAGENS (NOVO) ---
+=======
+
+    // --- LISTA DE IMAGENS ---
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
     private List<ImagemAnuncio> imagens = new ArrayList<>();
 
     public Anuncio() {}
@@ -66,6 +83,7 @@ public class Anuncio {
     public void setContato(String contato) { this.contato = contato; }
     public void setAtivo(Boolean ativo) { this.ativo = ativo; }
 
+<<<<<<< HEAD
     public LocalDateTime getCriadoEm() {
         return criadoEm;
     }
@@ -74,6 +92,8 @@ public class Anuncio {
         this.criadoEm = criadoEm;
     }
 
+=======
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
     // Setter da Lista de Imagens
     public void setImagens(List<ImagemAnuncio> imagens) { this.imagens = imagens; }
 

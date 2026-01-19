@@ -1,6 +1,7 @@
 package org.example.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -9,6 +10,14 @@ public class UsuarioDTO {
     private Long id;
     private String nome;
     private String dataNascimento; // String facilita no input do Front
+=======
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UsuarioDTO {
+    private Long id;
+    private String nome;
+    private String dataNascimento; // <--- MUDAMOS PARA STRING (Resolve o erro do módulo)
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
     private String cpf;
     private String cidade;
     private String bairro;
@@ -17,6 +26,7 @@ public class UsuarioDTO {
     private String email;
     private String senha;
 
+<<<<<<< HEAD
     // --- CORREÇÃO AQUI ---
     // Removemos o "fotoPerfilBase64" duplicado.
     // Mantivemos apenas "fotoPerfil" para casar EXATAMENTE com o Backend.
@@ -27,6 +37,11 @@ public class UsuarioDTO {
 
     // --- GETTERS E SETTERS ---
 
+=======
+    public UsuarioDTO() {}
+
+    // Getters e Setters
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -56,6 +71,7 @@ public class UsuarioDTO {
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+<<<<<<< HEAD
 
     // Getter e Setter da Foto (Únicos e Corretos)
     public String getFotoPerfil() {
@@ -65,4 +81,6 @@ public class UsuarioDTO {
     public void setFotoPerfil(String fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
+=======
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
 }

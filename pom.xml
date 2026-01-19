@@ -23,6 +23,7 @@
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
+<<<<<<< HEAD
             <artifactId>javafx-swing</artifactId>
             <version>20.0.1</version>
         </dependency>
@@ -33,6 +34,8 @@
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
+=======
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>

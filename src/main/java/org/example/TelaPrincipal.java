@@ -15,7 +15,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.model.Anuncio;
+<<<<<<< HEAD
 import java.time.format.DateTimeFormatter;
+=======
+import org.example.model.ImagemAnuncio;
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
 
 import java.io.ByteArrayInputStream;
 import java.net.URI;
@@ -45,11 +49,26 @@ public class TelaPrincipal {
         txtBusca.setOnKeyReleased(e -> filtrarLista(txtBusca.getText()));
 
         // --- 2. MENU LATERAL ---
+<<<<<<< HEAD
         menuLateral = new MenuLateral().criar(stage, this::alternarMenu);
         menuLateral.setMinWidth(280);
         menuLateral.setMaxWidth(280);
         menuLateral.setTranslateX(-280);
 
+=======
+        // Cria o menu passando a ação de fechar
+        menuLateral = new MenuLateral().criar(stage, this::alternarMenu);
+
+        // --- CORREÇÃO DO BUG VISUAL (TELA PRETA) ---
+        // Definimos largura fixa para o StackPane não esticar o menu na tela toda
+        menuLateral.setMinWidth(280);
+        menuLateral.setMaxWidth(280);
+
+        // Esconde o menu inicialmente
+        menuLateral.setTranslateX(-280);
+
+        // Ação para o botão do cabeçalho
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         Runnable acaoAbrirMenu = this::alternarMenu;
 
         // --- 3. CABEÇALHO ---
@@ -78,12 +97,28 @@ public class TelaPrincipal {
 
         // --- 5. ESTRUTURA RAIZ ---
         StackPane root = new StackPane();
+<<<<<<< HEAD
         root.setAlignment(Pos.CENTER_LEFT);
         root.getChildren().addAll(conteudoPrincipal, menuLateral);
         StackPane.setAlignment(menuLateral, Pos.CENTER_LEFT);
 
         // --- 6. CENA ---
         Scene scene = new Scene(root, AppConfig.LARGURA_INICIAL, AppConfig.ALTURA_INICIAL);
+=======
+        // Alinha tudo à esquerda para o menu não flutuar no meio
+        root.setAlignment(Pos.CENTER_LEFT);
+
+        // Adiciona o conteúdo atrás e o menu na frente
+        root.getChildren().addAll(conteudoPrincipal, menuLateral);
+
+        // Garante que o menu fique alinhado à esquerda dentro do StackPane
+        StackPane.setAlignment(menuLateral, Pos.CENTER_LEFT);
+
+        // --- 6. CENA ---
+        // Usa as constantes corrigidas do AppConfig
+        Scene scene = new Scene(root, AppConfig.LARGURA_INICIAL, AppConfig.ALTURA_INICIAL);
+
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         try { scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm()); } catch (Exception e) {}
 
         Navegacao.configurarJanela(stage, scene, "Home - ItaimVende", true);
@@ -95,10 +130,17 @@ public class TelaPrincipal {
     private void alternarMenu() {
         TranslateTransition transition = new TranslateTransition(Duration.millis(300), menuLateral);
         if (menuAberto) {
+<<<<<<< HEAD
             transition.setToX(-280);
             menuAberto = false;
         } else {
             transition.setToX(0);
+=======
+            transition.setToX(-280); // Esconde
+            menuAberto = false;
+        } else {
+            transition.setToX(0);    // Mostra
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
             menuAberto = true;
         }
         transition.play();
@@ -113,7 +155,10 @@ public class TelaPrincipal {
                     if (response.statusCode() == 200) {
                         try {
                             ObjectMapper mapper = new ObjectMapper();
+<<<<<<< HEAD
                             mapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
+=======
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
                             mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                             todosAnuncios = mapper.readValue(response.body(), new TypeReference<List<Anuncio>>() {});
                             Platform.runLater(() -> atualizarTela(todosAnuncios));
@@ -153,6 +198,7 @@ public class TelaPrincipal {
     }
 
     private VBox criarCardAnuncio(Anuncio anuncio) {
+<<<<<<< HEAD
         // VBox do Card (Mantém o estilo cinza arredondado atual)
         VBox card = new VBox(2);
         card.getStyleClass().add("card-produto");
@@ -235,6 +281,70 @@ public class TelaPrincipal {
         // Clique para detalhes
         card.setOnMouseClicked(e -> new TelaDetalhes().start((Stage) card.getScene().getWindow(), anuncio));
 
+=======
+        VBox card = new VBox(10);
+        card.setPadding(new Insets(15));
+        card.setStyle("-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 0); -fx-background-radius: 12; -fx-cursor: hand;");
+        card.setPrefWidth(240);
+        card.setMinWidth(240);
+        card.setMaxWidth(240);
+
+        StackPane imageContainer = new StackPane();
+        imageContainer.setPrefSize(210, 160);
+        imageContainer.setMinSize(210, 160);
+        imageContainer.setMaxSize(210, 160);
+
+        Rectangle clip = new Rectangle(210, 160);
+        clip.setArcWidth(10); clip.setArcHeight(10);
+        imageContainer.setClip(clip);
+
+        ImageView imgView = new ImageView();
+        String fotoBase64 = null;
+        if (anuncio.getImagens() != null && !anuncio.getImagens().isEmpty()) {
+            fotoBase64 = anuncio.getImagens().stream().filter(ImagemAnuncio::isPrincipal).map(ImagemAnuncio::getFotoBase64).findFirst().orElse(anuncio.getImagens().get(0).getFotoBase64());
+        }
+
+        if (fotoBase64 != null) {
+            try {
+                byte[] imgBytes = Base64.getDecoder().decode(fotoBase64);
+                Image imagemReal = new Image(new ByteArrayInputStream(imgBytes));
+                imgView.setImage(imagemReal);
+                if (imagemReal.getWidth() > 0) {
+                    double scale = Math.max(210 / imagemReal.getWidth(), 160 / imagemReal.getHeight());
+                    imgView.setFitWidth(imagemReal.getWidth() * scale);
+                    imgView.setFitHeight(imagemReal.getHeight() * scale);
+                    imgView.setPreserveRatio(true);
+                }
+            } catch (Exception e) {}
+        } else {
+            imageContainer.setStyle("-fx-background-color: #f0f2f5;");
+            imageContainer.getChildren().add(new Label("Sem foto"));
+        }
+
+        imageContainer.getChildren().add(imgView);
+        StackPane.setAlignment(imgView, Pos.CENTER);
+
+        Label lblPreco = new Label("R$ " + String.format("%.2f", anuncio.getPreco()));
+        lblPreco.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1c1e21;");
+
+        Label lblTitulo = new Label(anuncio.getTitulo());
+        lblTitulo.setStyle("-fx-font-size: 15px; -fx-text-fill: #050505;");
+        lblTitulo.setWrapText(true);
+        lblTitulo.setMaxHeight(40);
+
+        String cidade = anuncio.getCidade() != null ? anuncio.getCidade() : "Local não inf.";
+        Label lblCidade = new Label("📍 " + cidade);
+        lblCidade.setStyle("-fx-font-size: 12px; -fx-text-fill: #65676b;");
+
+        Button btnVer = new Button("Ver Detalhes");
+        btnVer.setMaxWidth(Double.MAX_VALUE);
+        btnVer.setStyle("-fx-background-color: #e4e6eb; -fx-text-fill: black; -fx-cursor: hand; -fx-font-weight: bold;");
+
+        btnVer.setOnAction(e -> abrirDetalhes(card.getScene().getWindow(), anuncio));
+        card.setOnMouseClicked(e -> abrirDetalhes(card.getScene().getWindow(), anuncio));
+
+        card.getChildren().addAll(imageContainer, lblPreco, lblTitulo, lblCidade, btnVer);
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         return card;
     }
 

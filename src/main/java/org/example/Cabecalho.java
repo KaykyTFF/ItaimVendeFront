@@ -16,14 +16,21 @@ public class Cabecalho {
     public static HBox criar(Stage stage, TextField txtBuscaExterno) {
         return criar(stage, txtBuscaExterno, null);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
     public static HBox criar(Stage stage, TextField txtBuscaExterno, Runnable acaoMenu) {
         // --- 1. ESQUERDA (Menu + Logo) ---
 
         Button btnMenu = new Button("☰");
         btnMenu.setStyle("-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 24px; -fx-cursor: hand;");
 
+<<<<<<< HEAD
         // Ação do Menu Lateral
+=======
+        // 2. Adicionamos a ação aqui: Quando clicar, executa o comando que veio da TelaPrincipal
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         btnMenu.setOnAction(e -> {
             if (acaoMenu != null) acaoMenu.run();
         });
@@ -32,11 +39,17 @@ public class Cabecalho {
         ImageView logoView = new ImageView();
         try {
             logoView.setImage(new Image(Cabecalho.class.getResourceAsStream("/header1-logo.png")));
+<<<<<<< HEAD
             logoView.setFitHeight(55);
             logoView.setPreserveRatio(true);
         } catch (Exception e) { /* Ignora se não achar */ }
 
         // Clique na logo volta para Home
+=======
+            logoView.setFitHeight(55); // Altura ajustada
+            logoView.setPreserveRatio(true);
+        } catch (Exception e) { /* Ignora se não achar */ }
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         logoView.setOnMouseClicked(e -> new TelaPrincipal().start(stage));
 
         HBox boxEsquerda = new HBox(15, btnMenu, logoView);
@@ -47,6 +60,10 @@ public class Cabecalho {
         TextField txtBusca = (txtBuscaExterno != null) ? txtBuscaExterno : new TextField();
         txtBusca.setPromptText("Busque 'celular'...");
         txtBusca.getStyleClass().add("campo-busca");
+<<<<<<< HEAD
+=======
+        // Faz o campo de texto crescer para ocupar o espaço da barra
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         HBox.setHgrow(txtBusca, Priority.ALWAYS);
 
         Button btnLupa = new Button("🔍");
@@ -56,11 +73,19 @@ public class Cabecalho {
         HBox boxBusca = new HBox(txtBusca, btnLupa);
         boxBusca.getStyleClass().add("barra-busca-container");
         boxBusca.setAlignment(Pos.CENTER_LEFT);
+<<<<<<< HEAD
         boxBusca.setMaxHeight(40);
 
         // --- 3. DIREITA (Links e Ícones) ---
 
         Button btnMeusAnuncios = new Button("⊞ Meus Anúncios");
+=======
+        boxBusca.setMaxHeight(40); // Altura fixa da barra
+
+        // --- 3. DIREITA (Links e Ícones) ---
+
+        Button btnMeusAnuncios = new Button("⊞ Meus Anúncios"); // Usei caractere unicode para o grid
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         btnMeusAnuncios.getStyleClass().add("btn-texto-nav");
         btnMeusAnuncios.setOnAction(e -> new TelaMeusAnuncios().start(stage));
 
@@ -69,6 +94,7 @@ public class Cabecalho {
         btnVender.setOnAction(e -> new TelaVender().start(stage));
 
         // --- ÍCONES DE IMAGEM ---
+<<<<<<< HEAD
         Button btnCarrinho = criarBotaoImagem("/icon-carrinho.png", 24);
         Button btnSino = criarBotaoImagem("/icon-sino.png", 24);
 
@@ -78,6 +104,18 @@ public class Cabecalho {
         // --- [ALTERAÇÃO AQUI] ---
         // Agora leva para a tela de Perfil estilo "Meu Painel"
         btnPerfil.setOnAction(e -> new TelaPerfil().start(stage));
+=======
+        // Ajuste o tamanho (24) conforme a qualidade da sua imagem
+        Button btnCarrinho = criarBotaoImagem("/icon-carrinho.png", 24);
+        Button btnSino = criarBotaoImagem("/icon-sino.png", 24);
+        Button btnPerfil = criarBotaoImagem("/icon-perfil.png", 28); // Perfil um pouco maior
+
+        // Ação do Perfil (Logout)
+        btnPerfil.setOnAction(e -> {
+            Sessao.limpar();
+            try { new TelaLogin().start(stage); } catch (Exception ex) {}
+        });
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
 
         HBox boxDireita = new HBox(20, btnMeusAnuncios, btnVender, btnCarrinho, btnSino, btnPerfil);
         boxDireita.setAlignment(Pos.CENTER_RIGHT);
@@ -104,7 +142,11 @@ public class Cabecalho {
     }
 
     /**
+<<<<<<< HEAD
      * Método auxiliar para criar botões com ícones de imagem.
+=======
+     * Método auxiliar para criar botões com ícones de imagem de forma limpa.
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
      */
     private static Button criarBotaoImagem(String caminhoRecurso, int altura) {
         Button btn = new Button();
@@ -115,6 +157,10 @@ public class Cabecalho {
             img.setPreserveRatio(true);
             btn.setGraphic(img);
         } catch (Exception e) {
+<<<<<<< HEAD
+=======
+            // Se a imagem falhar, coloca um texto de fallback
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
             btn.setText("?");
             btn.setStyle("-fx-text-fill: white;");
         }

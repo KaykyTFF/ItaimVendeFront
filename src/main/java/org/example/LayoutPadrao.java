@@ -18,6 +18,7 @@ public class LayoutPadrao {
      */
     public Scene criarCena(Stage stage, Region conteudoEspecifico) {
 
+<<<<<<< HEAD
         // 1. Prepara o Menu Lateral
         // Passamos 'this::alternarMenu' para que o botão 'X' funcione
         menuLateral = new MenuLateral().criar(stage, this::alternarMenu);
@@ -32,11 +33,24 @@ public class LayoutPadrao {
 
         // 2. Barra de Busca Genérica (se usada em outras telas)
         TextField txtBusca = new TextField();
+=======
+        // 1. Prepara o Menu Lateral (Escondido na esquerda)
+        menuLateral = new MenuLateral().criar(stage, this::alternarMenu);
+        menuLateral.setTranslateX(-280);
+
+        // 2. Barra de Busca Genérica
+        TextField txtBusca = new TextField();
+        // Se der Enter na busca em telas secundárias, volta pra Home pesquisando
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         txtBusca.setOnAction(e -> {
             try { new TelaPrincipal().start(stage); } catch (Exception ex) {}
         });
 
+<<<<<<< HEAD
         // 3. Cria o Cabeçalho
+=======
+        // 3. Cria o Cabeçalho passando a nossa ação de alternar menu
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
         HBox topo = Cabecalho.criar(stage, txtBusca, this::alternarMenu);
 
         // 4. Monta o Conteúdo (Topo + O que veio da tela específica)
@@ -44,6 +58,7 @@ public class LayoutPadrao {
         VBox.setVgrow(conteudoEspecifico, Priority.ALWAYS); // O conteúdo estica
         layoutConteudo.setStyle("-fx-background-color: #f0f2f5;");
 
+<<<<<<< HEAD
         // 5. O Grande Segredo: StackPane para o Menu flutuar por cima
         StackPane root = new StackPane();
         root.setAlignment(Pos.CENTER_LEFT); // Alinha tudo à esquerda por padrão
@@ -63,6 +78,15 @@ public class LayoutPadrao {
         } catch (Exception e) {}
 
         return scene;
+=======
+        // 5. StackPane para o Menu flutuar por cima
+        StackPane root = new StackPane(layoutConteudo, menuLateral);
+        root.setAlignment(Pos.CENTER_LEFT);
+
+        // --- AQUI ESTÁ A MUDANÇA ---
+        // Agora usamos as variáveis globais do AppConfig para definir o tamanho
+        return new Scene(root, AppConfig.LARGURA_INICIAL, AppConfig.ALTURA_INICIAL);
+>>>>>>> 60bc3d42dce0ffcc32571410f2cbfface5535d0d
     }
 
     // A animação de deslizar
